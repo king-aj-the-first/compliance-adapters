@@ -30,9 +30,12 @@ export {
 export {
   InMemoryDeadLetterQueue,
   FileDeadLetterQueue,
+  DeadLetterQueueFullError,
   replayDeadLetterQueue,
   type DeadLetterEvent,
   type DeadLetterQueue,
+  type DeadLetterQueueLimits,
+  type DlqSizeMetrics,
   type ReplayDeadLetterQueueOptions,
   type ReplayDeadLetterQueueResult,
 } from './deadLetterQueue';
