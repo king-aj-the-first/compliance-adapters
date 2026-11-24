@@ -39,6 +39,11 @@ export {
   type ReplayDeadLetterQueueOptions,
   type ReplayDeadLetterQueueResult,
 } from './deadLetterQueue';
+export {
+  PostgresDeadLetterQueue,
+  type PostgresClient,
+  type PostgresDeadLetterQueueOptions,
+} from './postgresDeadLetterQueue';
 export { computeBackoffDelayMs, type BackoffOptions } from '@compliance-adapters/backoff';
 export { HttpWebhookSender, WebhookHttpError, verifyWebhookSignature, type WebhookSender, type HttpWebhookSenderOptions } from './webhook';
 export { createWebhookForwarder, type WebhookForwarderOptions } from './factory';

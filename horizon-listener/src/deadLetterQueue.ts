@@ -18,8 +18,8 @@ export interface DeadLetterEvent {
 export interface DeadLetterQueue {
   /** Suitable as (or from within) `onEventFailure`. */
   enqueue(event: RawContractEvent, error: unknown): Promise<void>;
-  /** Returns a copy of all stored entries in insertion order. */
-  getAll(): DeadLetterEvent[];
+  /** Returns a copy of all stored entries in insertion order (may be async). */
+  getAll(): DeadLetterEvent[] | Promise<DeadLetterEvent[]>;
   /** Removes the first entry for `eventId`; resolves `false` if none exists. */
   remove(eventId: string): Promise<boolean>;
   clear(): Promise<void>;
@@ -208,7 +208,8 @@ export async function replayDeadLetterQueue(
   options: ReplayDeadLetterQueueOptions,
 ): Promise<ReplayDeadLetterQueueResult> {
   const { queue, send, dryRun = false, limit } = options;
-  const entries = queue.getAll().slice(0, limit ?? Number.MAX_SAFE_INTEGER);
+  const all = await queue.getAll();
+  const entries = all.slice(0, limit ?? Number.MAX_SAFE_INTEGER);
   let delivered = 0;
   let failed = 0;
   for (const entry of entries) {
