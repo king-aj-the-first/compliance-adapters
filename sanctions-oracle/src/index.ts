@@ -7,6 +7,13 @@ export { SanctionsProvider, CheckResult } from './SanctionsProvider';
 export { MockSanctionsProvider, MOCK_FLAGGED_ADDRESSES } from './mockProvider';
 export { CsvSanctionsProvider, parseCsv } from './csvProvider';
 export {
+  UnSanctionsProvider,
+  parseUnSanctionsXml,
+  UN_SANCTIONS_SOURCE,
+  type UnSanctionsProviderOptions,
+  type UnSanctionsEntry,
+} from './unProvider';
+export {
   syncSanctionsToDenylist,
   createRpcDenylistWriter,
   runCli,
