@@ -14,6 +14,13 @@ export {
   type UnSanctionsEntry,
 } from './unProvider';
 export {
+  EuSanctionsProvider,
+  parseEuSanctionsXml,
+  EU_SANCTIONS_SOURCE,
+  type EuSanctionsProviderOptions,
+  type EuSanctionsEntry,
+} from './euProvider';
+export {
   syncSanctionsToDenylist,
   createRpcDenylistWriter,
   runCli,
